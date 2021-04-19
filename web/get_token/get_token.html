@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify ig</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+  <link rel="stylesheet" href="./glass.css">
+  <link rel="icon" type="image/jpg" href="assets/disk.jpg" id="favicon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/eel.js"></script>
+
+</head>
+<body>
+
+
+<script>
+    
+    
+
+    var id = "abc";
+    var params = location.search;
+    console.log(params);
+    var raw_token = params.replace("?code=", "");
+    console.log(raw_token);
+    
+    var returnjson = "";
+    var auth_code = raw_token;
+    var ajaxResult = [];
+    var access_token = "";
+    var refresh_token = "";
+    var client_id = "4c38a534539b4510b8bdc79b4ec86f00";
+    var client_secret = "2db41f2ee49c49af84d018dc1b744e17";
+    var redirect_uri = "http://localhost:8000/get_token/get_token.html";
+
+          eel.expose(blynk_tab);
+          function blynk_tab() {
+          window.location.href = "http://localhost:8000/temp/blynk.html";     
+          }
+          
+          eel.expose(req_oauth);
+          function req_oauth() {
+  
+      		console.log("getting access token");
+        		jQuery.ajax({
+			        url : 'https://accounts.spotify.com/api/token',
+			        type: 'POST',
+			        data: {grant_type: "authorization_code", code: auth_code, redirect_uri: redirect_uri, client_id: client_id, client_secret: client_secret},
+			        success: function(data) {
+			          ajaxResult.push(data);
+			          console.log(data);
+			          returnjson = data;
+			          access_token =  returnjson.access_token;
+			          refresh_token = returnjson.refresh_token;
+			          console.log("token",access_token);
+			          console.log("refresh",refresh_token);
+                eel.get_oauth(returnjson, access_token, refresh_token);
+                
+			           }
+
+			         });
+            
+      }
+  
+        	/*
+
+        	else {
+        		console.log("refreshing token");
+        		jQuery.ajax({
+			        url : 'https://accounts.spotify.com/api/token',
+			        type: 'POST',
+			        data: {grant_type: "refresh_token", refresh_token: refresh_token, client_id: client_id, client_secret: client_secret},
+			        success: function(data) {
+			          ajaxResult.push(data);
+			          console.log(data);
+			          var returnjson = data;
+			          access_token =  returnjson.access_token;
+			          console.log("new token",access_token);
+			 
+          
+			        }
+
+			      });
+
+        	}
+
+        	
+      */
+      
+  
+
+  </script>
+  
+     
+  
+</body>
+</html>
