@@ -1,1 +1,1 @@
-# Spotify-Audio-Analysis-Bar_Visualizer(Python)
+# Spotify-Audio-Analysis-Bar-Visualizer(Python)
