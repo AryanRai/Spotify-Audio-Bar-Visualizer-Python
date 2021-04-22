@@ -21,7 +21,7 @@ let _token = hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = '4c38a534539b4510b8bdc79b4ec86f00';
+const clientId = 'CLIENT ID';
 const redirectUri = 'http://localhost:8000/get_token/get_token.html';
 const scopes = [
   'streaming',
