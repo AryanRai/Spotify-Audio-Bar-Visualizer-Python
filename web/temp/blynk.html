@@ -8,6 +8,31 @@
 BLYNK
 <script type="text/javascript">
 	eel.confirmation();
+	//update everytime
+	bar_percentage = 0;
+	current_track_playing_status = 0;
+	current_track_progress = 0;
+	
+	//update only when changed at start
+	current_track_name = "";
+	current_track_artist = "";
+	current_track_album = "";
+	current_track_album_art = "";
+	current_track_duration = 0;
+	current_track_id = "";
+	current_track_uri = "";
+
+
+	eel.expose(setdatafromspotifyalways);
+	function setdatafromspotifyalways(bar_percentage_py, current_track_playing_status_py, current_track_progress_py) {
+		bar_percentage = bar_percentage_py;
+		current_track_playing_status = current_track_playing_status_py;
+		current_track_progress = current_track_progress_py;
+		console.log("bar_percentage", bar_percentage);
+		console.log("current_track_playing_status", current_track_playing_status);
+		console.log("current_track_progress", current_track_progress);	
+		
+	}
 </script>
 </body>
 </html>

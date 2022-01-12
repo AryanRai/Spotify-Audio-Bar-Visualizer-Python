@@ -142,8 +142,9 @@ def spotify_main():
                 #print(current_loudness_positive)
                 #print(current_loudness_time)
                 
-                bar_percentage = round(((current_loudness_positive/max_loudness_positive) * 100)* current_confidence)
-                print (("#" * bar_percentage))    #main peak apmlitude data to use
+                bar_percentage = ((current_loudness_positive/max_loudness_positive) * 100)* current_confidence
+                eel.setdatafromspotifyalways(bar_percentage, current_track_playing_status, current_track_progress)
+                print (("#" * round(bar_percentage)))    #main peak apmlitude data to use
                 #print(bar_percentage,"%")
                 current_segment = current_segment + 1
                 #print(current_segment)
