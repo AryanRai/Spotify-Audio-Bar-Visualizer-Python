@@ -13,4 +13,6 @@ How to use
 
 4. run audio_analitycs.py 
 
+http://localhost:8000/get_token/get_token.html
+
 note: put your own html css js idc whatever here ["Spotify-Audio-Bar-Visualizer-Python/web/temp/blynk.html"] .... this will run the ui for whatever u make
